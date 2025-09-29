@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contest Entry Form - TechGadget Contest</title>
+  <meta name="description" content="Submit your contest entry to participate in the TechGadget Contest. Complete the form with your purchase details to qualify for amazing prizes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="products.html">Products</a>
+    <a href="contest-entry.html" class="active">Contest Entry</a>
+  </nav>
+
+  <main class="content">
+    <div class="form-container">
+      <div class="form-header">
+        <h1>🏆 Contest Entry Form</h1>
+        <p>Complete the form below to submit your contest entry. Make sure all information is accurate and upload a clear copy of your purchase receipt.</p>
+      </div>
+
+      <form id="contestForm" class="contest-form" novalidate>
+        <!-- Personal Information Section -->
+        <div class="form-section">
+          <h2>📝 Personal Information</h2>
+          
+          <div class="form-group">
+            <label for="fullName" class="form-label">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" class="form-input" required>
+            <div class="error-message" id="fullNameError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="icNumber" class="form-label">Identity Card / Passport Number *</label>
+            <input type="text" id="icNumber" name="icNumber" class="form-input" required>
+            <div class="error-message" id="icNumberError"></div>
+            <div class="form-hint">Format: 123456-78-9012 or A12345678</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+            <div class="error-message" id="emailError"></div>
+          </div>
+        </div>
+
+        <!-- Contest Question Section -->
+        <div class="form-section">
+          <h2>❓ Contest Question</h2>
+          
+          <div class="question-box">
+            <p class="question-text">
+              <strong>Question:</strong> In 50 words or less, tell us why you deserve to win this contest and how our premium tech products will enhance your daily life?
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label for="answer" class="form-label">Your Answer *</label>
+            <textarea id="answer" name="answer" class="form-textarea" rows="5" maxlength="300" required placeholder="Share your story in 50 words or less..."></textarea>
+            <div class="error-message" id="answerError"></div>
+            <div class="character-count">
+              <span id="charCount">0</span> / 300 characters (<span id="wordCount">0</span> / 50 words)
+            </div>
+          </div>
+        </div>
+
+        <!-- Receipt Upload Section -->
+        <div class="form-section">
+          <h2>🧾 Purchase Receipt</h2>
+          
+          <div class="form-group">
+            <label for="receipt" class="form-label">Upload Purchase Receipt *</label>
+            <div class="file-upload-area" id="fileUploadArea">
+              <input type="file" id="receipt" name="receipt" class="file-input" accept="image/*,.pdf" required>
+              <div class="file-upload-content">
+                <div class="file-upload-icon">📄</div>
+                <p class="file-upload-text">
+                  <strong>Click to upload</strong> or drag and drop<br>
+                  Supported formats: JPG, PNG, PDF (Max 5MB)
+                </p>
+              </div>
+              <div class="file-preview" id="filePreview" style="display: none;">
+                <div class="file-info">
+                  <span class="file-name" id="fileName"></span>
+                  <span class="file-size" id="fileSize"></span>
+                </div>
+                <button type="button" class="file-remove" id="removeFile">✕</button>
+              </div>
+            </div>
+            <div class="error-message" id="receiptError"></div>
+          </div>
+        </div>
+
+        <!-- Terms Agreement -->
+        <div class="form-section">
+          <div class="form-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+              <span class="checkmark"></span>
+              I agree to the <a href="terms.html" target="_blank">Terms & Conditions</a> and Privacy Policy *
+            </label>
+            <div class="error-message" id="agreeTermsError"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="agreeMarketing" name="agreeMarketing">
+              <span class="checkmark"></span>
+              I agree to receive marketing communications and contest updates
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-submit">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            🚀 Submit Contest Entry
+          </button>
+          <p class="submit-note">
+            By submitting this form, you confirm that all information provided is accurate and you meet all contest eligibility requirements.
+          </p>
+        </div>
+      </form>
+
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage" style="display: none;">
+        <div class="success-content">
+          <div class="success-icon">🎉</div>
+          <h2>Entry Submitted Successfully!</h2>
+          <p>Thank you for participating in the TechGadget Contest. Your entry has been received and you'll hear from us soon regarding the results.</p>
+          <p><strong>Entry ID:</strong> <span id="entryId"></span></p>
+          <a href="index.html" class="success-btn">Return to Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>TechGadget Contest</h3>
+        <p>Empowering tech enthusiasts worldwide with opportunities to win cutting-edge technology through our premium product ecosystem.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="products.html">Products</a></p>
+        <p><a href="terms.html">Terms & Conditions</a></p>
+        <p><a href="contest-entry.html">Contest Entry</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <p><a href="#faq">FAQ</a></p>
+        <p><a href="#help">Help Center</a></p>
+        <p><a href="#privacy">Privacy Policy</a></p>
+        <p><a href="#shipping">Shipping Info</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>📧 contest@techgadget.com</p>
+        <p>📞 1-800-TECH-WIN</p>
+        <p>📍 123 Innovation Drive, Tech Valley, CA 94000</p>
+        <p>⏰ Mon-Fri: 9AM-6PM PST</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 TechGadget Promotions. All rights reserved. | Designed with ❤️ for tech enthusiasts</p>
+    </div>
+  </footer>
+
+  <script>
+    // Form validation and functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contestForm');
+      const fileInput = document.getElementById('receipt');
+      const fileUploadArea = document.getElementById('fileUploadArea');
+      const filePreview = document.getElementById('filePreview');
+      const answerTextarea = document.getElementById('answer');
+      const charCount = document.getElementById('charCount');
+      const wordCount = document.getElementById('wordCount');
+
+      // File upload handling
+      fileUploadArea.addEventListener('click', () => fileInput.click());
+      
+      fileUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.add('drag-over');
+      });
+
+      fileUploadArea.addEventListener('dragleave', () => {
+        fileUploadArea.classList.remove('drag-over');
+      });
+
+      fileUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.remove('drag-over');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFileSelect(files[0]);
+        }
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          handleFileSelect(e.target.files[0]);
+        }
+      });
+
+      function handleFileSelect(file) {
+        // Validate file
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
+
+        if (file.size > maxSize) {
+          showError('receiptError', 'File size must be less than 5MB');
+          return;
+        }
+
+        if (!allowedTypes.includes(file.type)) {
+          showError('receiptError', 'Please upload a JPG, PNG, or PDF file');
+          return;
+        }
+
+        // Show file preview
+        document.getElementById('fileName').textContent = file.name;
+        document.getElementById('fileSize').textContent = formatFileSize(file.size);
+        filePreview.style.display = 'flex';
+        document.querySelector('.file-upload-content').style.display = 'none';
+        clearError('receiptError');
+      }
+
+      // Remove file
+      document.getElementById('removeFile').addEventListener('click', () => {
+        fileInput.value = '';
+        filePreview.style.display = 'none';
+        document.querySelector('.file-upload-content').style.display = 'block';
+      });
+
+      // Character and word count
+      answerTextarea.addEventListener('input', function() {
+        const text = this.value;
+        const chars = text.length;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\\s+/).length;
+
+        charCount.textContent = chars;
+        wordCount.textContent = words;
+
+        // Update color based on limits
+        if (words > 50) {
+          wordCount.style.color = '#ef4444';
+        } else if (words > 40) {
+          wordCount.style.color = '#f59e0b';
+        } else {
+          wordCount.style.color = '#10b981';
+        }
+      });
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateForm()) {
+          // Simulate form submission
+          const submitBtn = document.getElementById('submitBtn');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '⏳ Submitting...';
+
+          setTimeout(() => {
+            // Generate entry ID
+            const entryId = 'TG-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            document.getElementById('entryId').textContent = entryId;
+            
+            // Show success message
+            form.style.display = 'none';
+            document.querySelector('.form-header').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+          }, 2000);
+        }
+      });
+
+      // Validation functions
+      function validateForm() {
+        let isValid = true;
+
+        // Full Name validation
+        const fullName = document.getElementById('fullName').value.trim();
+        if (fullName.length < 2) {
+          showError('fullNameError', 'Please enter your full name (minimum 2 characters)');
+          isValid = false;
+        } else {
+          clearError('fullNameError');
+        }
+
+        // IC Number validation
+        const icNumber = document.getElementById('icNumber').value.trim();
+        const icPattern = /^\\d{6}-\\d{2}-\\d{4}$|^[A-Z]\\d{8}$/;
+        if (!icPattern.test(icNumber)) {
+          showError('icNumberError', 'Please enter a valid IC number (123456-78-9012) or passport number (A12345678)');
+          isValid = false;
+        } else {
+          clearError('icNumberError');
+        }
+
+        // Email validation
+        const email = document.getElementById('email').value.trim();
+        const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        if (!emailPattern.test(email)) {
+          showError('emailError', 'Please enter a valid email address');
+          isValid = false;
+        } else {
+          clearError('emailError');
+        }
+
+        // Answer validation
+        const answer = document.getElementById('answer').value.trim();
+        const words = answer === '' ? 0 : answer.split(/\\s+/).length;
+        if (answer.length < 10) {
+          showError('answerError', 'Please provide an answer (minimum 10 characters)');
+          isValid = false;
+        } else if (words > 50) {
+          showError('answerError', 'Answer must be 50 words or less');
+          isValid = false;
+        } else {
+          clearError('answerError');
+        }
+
+        // Receipt validation
+        if (!fileInput.files.length) {
+          showError('receiptError', 'Please upload your purchase receipt');
+          isValid = false;
+        } else {
+          clearError('receiptError');
+        }
+
+        // Terms agreement validation
+        if (!document.getElementById('agreeTerms').checked) {
+          showError('agreeTermsError', 'You must agree to the Terms & Conditions');
+          isValid = false;
+        } else {
+          clearError('agreeTermsError');
+        }
+
+        return isValid;
+      }
+
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+      }
+
+      function clearError(elementId) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+      }
+
+      function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+    });
+  </script>
+</body>
+</html>
