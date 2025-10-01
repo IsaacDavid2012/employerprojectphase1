@@ -94,6 +94,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 0; /* Remove any default padding since navbar is fixed */
 }
 
 /* 📝 Professional Typography */
@@ -152,6 +153,8 @@ p {
   align-items: center;
   text-align: center;
   padding: 4rem 2rem;
+  padding-top: 8rem; /* Add space for fixed navbar */
+  margin-top: 80px; /* Account for navbar height */
   background: 
     linear-gradient(135deg, var(--primary-50) 0%, var(--white) 100%);
   overflow: hidden;
@@ -339,13 +342,18 @@ p {
 /* 📄 PROFESSIONAL CONTENT CONTAINERS */
 .content {
   max-width: 1200px;
-  margin: 6rem auto 4rem;
+  margin: 2rem auto 4rem; /* Reduced top margin since banner now has proper spacing */
   padding: 3rem;
   background: var(--white);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
   position: relative;
   border: 1px solid var(--gray-200);
+}
+
+/* Ensure proper spacing for content on pages without banners */
+body > .navbar + .content {
+  margin-top: 8rem; /* Extra space for pages without banner */
 }
 
 .content::before {
